@@ -12,13 +12,18 @@ export default function Orders({ showModal, onClose }) {
     const products = useSelector(state => state.compra)
 
     const subTotal = products.reduce((acc, value) => acc + parseInt(value.price) * value.quantity, 0)
+    const action = () => {
+        onClose();
+        dispatch({ type: "producto-filtrado", value: "" })
 
+    }
 
     const dispatch = useDispatch()
 
+    const user = useSelector(state => state.user)
     return (
         <Transition.Root show={showModal} as={Fragment}>
-            <Dialog as="div" className="relative z-10" onClose={onClose}>
+            <Dialog as="div" className="relative z-10" onClose={action}>
                 <Transition.Child
                     as={Fragment}
                     enter="ease-in-out duration-500"
@@ -52,7 +57,7 @@ export default function Orders({ showModal, onClose }) {
                                                     <button
                                                         type="button"
                                                         className="-m-2 p-2 text-gray-400 hover:text-gray-500"
-                                                        onClick={onClose}
+                                                        onClick={action}
                                                     >
                                                         <span className="sr-only">Close panel</span>
                                                         <XMarkIcon className="h-6 w-6" aria-hidden="true" />
@@ -98,11 +103,11 @@ export default function Orders({ showModal, onClose }) {
                                                                     </div>
                                                                     <div className="flex justify-around item-center text-sm mt-6">
 
-                                                                        <Button onButtonClick={() => dispatch({ type: "delete-row", value: product })} pad="px-8">
+                                                                        <Button onButtonClick={() => dispatch({ type: "delete-row", value: product })} pad="px-8" wit="w-2">
                                                                             -
                                                                         </Button>
                                                                         <span className='text-center flex items-center text-lg'>{product.quantity}</span>
-                                                                        <Button onButtonClick={() => dispatch({ type: "add", value: product })} pad="px-8" >
+                                                                        <Button onButtonClick={() => dispatch({ type: "add", value: product })} pad="px-8" wit="w-2">
                                                                             +
                                                                         </Button>
                                                                     </div>
@@ -120,13 +125,14 @@ export default function Orders({ showModal, onClose }) {
                                                 <p>${subTotal}</p>
                                             </div>
                                             <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
-                                            <div className="mt-6">
+                                            <div className="mt-6 flex justify-center">
                                                 <Link
-                                                    to="/checkout"
-                                                    className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                                                    to={user.name ? "/checkout" : "/login"}
                                                     onClick={onClose}
                                                 >
-                                                    Checkout
+                                                    <Button onButtonClick={onClose} pad="px-2 sm:px-8" wit="">
+                                                        <p>CheckOut</p>
+                                                    </Button>
                                                 </Link>
                                             </div>
                                             <div className="mt-6 flex justify-center text-center text-sm text-gray-500">

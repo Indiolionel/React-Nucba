@@ -1,32 +1,57 @@
 import './App.css';
 
-import {Route, Routes} from "react-router-dom";
+import { Route, Routes, useHistory, useLocation } from "react-router-dom";
 import NavBar from './componentes/navBar';
 import Home from './Pages/Home';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import CheckOut from './Pages/checkOut';
+import Login from './Pages/login';
+import Registrer from './Pages/registrer';
+import Ordenes from './Pages/misOrders';
+import { ProtectedRoute } from './componentes/protectedRouter';
+import Contact from './Pages/contact';
+import ForgotPassword from './Pages/forgotPassword';
+import Loader from './componentes/loader';
 
 function App() {
-const dispatch = useDispatch()
+  const dispatch = useDispatch()
 
-useEffect(() => {
+  const user = useSelector(state => state.user)
 
-  return () => {
-    dispatch({type:"load-from-localStorage"})
+
+  useEffect(() => {
+    dispatch({ type: "load-user-localStorage" })
+    dispatch({ type: "load-from-localStorage" })
+
+  }, [])
+
+  if (!user) {
+    return <Loader />
   }
-}, [])
+
 
   return (
     <>
-  <NavBar />
-  <Routes>
-    <Route path="/" element={<Home />} />
-    <Route path="checkout" element={<CheckOut />} />
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="checkout" element={<ProtectedRoute user={user.name}>
+          <CheckOut />
+        </ProtectedRoute>} />
+        <Route path="login" element={<Login />} />
+        <Route path="registrer" element={<Registrer />} />
 
-   
-  </Routes>
-  </>
+        <Route path="ordenes" element={<ProtectedRoute user={user.name}>
+          <Ordenes />
+        </ProtectedRoute>} />
+        <Route path="contacto" element={<Contact />} />
+        <Route path="forgot-password" element={<ProtectedRoute user={!user.name}>
+          <ForgotPassword />
+        </ProtectedRoute>} />
+
+      </Routes>
+    </>
 
   )
 }

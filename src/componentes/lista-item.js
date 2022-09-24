@@ -11,7 +11,7 @@ export default function ListaItem() {
 
   return (
     <div className="bg-white">
-      <Buscador />
+      {categorySelected &&<Buscador />} 
       {categorySelected && <Productos categorySelected={categorySelected} setCategorySelected={setCategorySelected} />}
       {!categorySelected && <Categorias setCategorySelected={setCategorySelected} />}
     </div>

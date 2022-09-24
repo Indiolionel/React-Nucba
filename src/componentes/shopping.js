@@ -9,10 +9,10 @@ export default function Shopping() {
     const dispatch = useDispatch()
     return (
         <div className="flow-root">
-            <ul role="list" className="-my-6 divide-y divide-gray-200">
+            <ul role="list" className="-my-6 divide-y  divide-gray-200">
                 {products.map((product) => (
                     <li key={product.id} className="flex py-6">
-                        <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                        <div className="h-28 sm:h-24 md:h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                             <img
                                 src={product.imageSrc}
                                 alt={product.imageAlt}
@@ -27,13 +27,13 @@ export default function Shopping() {
                                         <a href={product.href}>{product.name}</a>
                                     </h3>
                                     <p>${product.price}</p>
-                                    <div className="flex justify-around item-center text-sm mt-6 w-1/2 sm:w-2/5">
+                                    <div className="flex justify-around items-center text-sm mt-6 w-1/2 sm:w-2/5">
 
-                                        <Button onButtonClick={() => dispatch({ type: "delete-row", value: product })} pad="px-4"  >
+                                        <Button onButtonClick={() => dispatch({ type: "delete-row", value: product })} pad="px-4" wit="w-2" >
                                             -
                                         </Button>
                                         <span className='text-center flex items-center text-lg'>{product.quantity}</span>
-                                        <Button onButtonClick={() => dispatch({ type: "add", value: product })} pad="px-4" >
+                                        <Button onButtonClick={() => dispatch({ type: "add", value: product })} pad="px-4" wit="w-2" >
                                             +
                                         </Button>
                                     </div>

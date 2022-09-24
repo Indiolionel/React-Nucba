@@ -2,6 +2,7 @@
 import { useDispatch } from 'react-redux'
 import { PRODUCT } from "../constants/utils"
 import Button from './button'
+import Notificacion from './notificacion'
 
 export default function Card({ data, onClick, type, onButtonClick }) {
 
@@ -10,7 +11,7 @@ export default function Card({ data, onClick, type, onButtonClick }) {
     <div key={data.id} className="group flex flex-col relative p-5 border-solid rounded-lg
      bg-gray-200 hover:bg-gray-300 border-2  border-gray-400 hover:border-gray-600 "
       onClick={onClick} >
-
+        
       <div className="w-full min-h-44 bg-gray-200 rounded-md relative overflow-hidden group-hover:opacity-75">
         <img
           src={data.imageSrc}

@@ -8,7 +8,6 @@ export function listaCompra(state = [], action) {
     switch (action.type) {
   
       case 'add':
-        console.log("state"+state)
         const list = addItemCart(state, action.value)
         
         localStorage.setItem("list", JSON.stringify(list))

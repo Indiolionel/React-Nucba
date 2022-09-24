@@ -1,3 +1,42 @@
 .h-container {
     height: 655px;
 }
+
+.loader-full-screen {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(0, 0, 0, 0.4);
+    position: absolute;
+    pointer-events: all;
+    top: 0;
+    left: 0;
+    z-index:10;
+}
+
+.spinner,.spinner:after{
+    display: block;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+ }
+.spinner {
+    background-color: transparent;
+    border-top: 5px solid rgb(66,139,202);
+    border-right: 5px solid rgb(66,139,202);
+    border-bottom: 5px solid rgb(66,139,202);
+    border-left: 5px solid rgba(66,139,202,.2);
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-duration: .8s;
+    animation-name: spinner-loading
+ }
+@keyframes spinner-loading{
+  0% {
+      transform: rotate(0deg)
+  } to {
+      transform: rotate(1turn)
+  }
+}

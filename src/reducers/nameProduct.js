@@ -1,11 +1,8 @@
-
-
-export function modal(state = false, action) {
+export function nameProducto(state = "", action) {
 
     switch (action.type) {
   
-      case 'change':
-        
+      case 'producto-filtrado':
         return action.value
   
   

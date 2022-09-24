@@ -6,19 +6,27 @@ import { useDispatch, useSelector } from "react-redux"
 import Button from './button'
 
 export default function Productos({ categorySelected, setCategorySelected }) {
+  const dispatch = useDispatch()
+
   const emptyCategory = () => {
+    dispatch({type:"producto-filtrado", value:""})
+
     return setCategorySelected("")
   }
 
   const productosFiltrados = products.filter((product) => {
-    if (product.category === categorySelected) {
+    if (product.category === categorySelected ) {
       return product
     }
   })
 
-  const dispatch = useDispatch()
-  const state = useSelector(state => state.compra)
+  
+  const valorEncontrado = useSelector(state => state.nameProducto)
 
+  const action = (product)=> {
+    dispatch({ type: "change", value: true });
+    dispatch({ type: 'add', value: product });
+  }
   return (
     <>
 
@@ -28,9 +36,8 @@ export default function Productos({ categorySelected, setCategorySelected }) {
 
         </div>
         <div className='flex flex-row justify-end w-full'>
-          <Button onButtonClick={emptyCategory} pad="px-12">
+          <Button onButtonClick={emptyCategory} pad="px-2">
             Volver
-
 
           </Button>
 
@@ -38,7 +45,7 @@ export default function Productos({ categorySelected, setCategorySelected }) {
         <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
           {productosFiltrados.map((product) => (
 
-            <Card key={product.id} data={product} type={PRODUCT} onButtonClick={() => dispatch({ type: 'add', value: product })} />
+          ((product.name.toLowerCase().includes(valorEncontrado.toLowerCase())) || !valorEncontrado) && <Card key={product.id} data={product} type={PRODUCT} onButtonClick={()=>action(product)} />
 
           ))}
         </div>
