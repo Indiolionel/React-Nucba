@@ -23,6 +23,11 @@ const app = initializeApp(firebaseConfig);
 
 export const db = getFirestore(app);
 
+
+
+export const auth = getAuth(app);
+
+
 const mapUserFromFirebaseAuth = user => {
   const { email, name, photoURL } = user;
 
@@ -33,13 +38,13 @@ const mapUserFromFirebaseAuth = user => {
 
   }
 }
-export const auth = getAuth(app);
-
 
 export const onAuthStateChange = (onChange) => {
 
   return onAuthStateChanged(auth, async _user => {
+    console.log("userAntes", _user)
     const user = await dataUser(_user)
+    console.log("userOnAuth", user)
     const finalyUser = mapUserFromFirebaseAuth(user)
     onChange(finalyUser)
   })
@@ -119,7 +124,7 @@ export const dataUser = async user => {
 
   const docRef = doc(db, `users/${auth.currentUser.uid}`);
   const docSnap = await getDoc(docRef);
-
+  console.log("data", docSnap.data())
   if (docSnap.exists()) {
     return docSnap.data();
   }

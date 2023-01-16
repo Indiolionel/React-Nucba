@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, Navigate, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Button from '../componentes/button'
 import Loader from '../componentes/loader'
 import swal from 'sweetalert';
@@ -25,6 +25,7 @@ export default function Registrer() {
 
   const SignupSchema = Yup.object().shape({
     fullname: Yup.string()
+      .matches(/^[a-z]+$/, 'Solo letras') 
       .min(4, 'Minimo 4 caracteres')
       .max(20, 'Maximo 20 caracteres')
       .required('Required'),
@@ -71,7 +72,7 @@ export default function Registrer() {
 
             }}
             validationSchema={SignupSchema}
-            onSubmit={async (values, {resetForm}) => {
+            onSubmit={async (values, { resetForm }) => {
               setCargando(true)
               const { email, password, fullname } = values;
               try {
@@ -81,22 +82,23 @@ export default function Registrer() {
 
 
               } catch (error) {
-                if (error.code == "auth/email-already-in-use") {
-                  {swal({
-                    title: 'El email no tiene una cuenta creada',
-                    showClass: {
+                if (error.code === "auth/email-already-in-use") {
+                  
+                    swal({
+                      title: 'El email ya tiene una cuenta creada',
+                      showClass: {
                         popup: 'animate__animated animate__fadeInDown'
-                    },
-                    hideClass: {
+                      },
+                      hideClass: {
                         popup: 'animate__animated animate__fadeOutUp'
-                    },
-                    timer: 1500
-                })
-                resetForm({values:{...values,email:""}})
-              
-              }
+                      },
+                      timer: 1500
+                    })
+                    resetForm({ values: { ...values, email: "" } })
+
+                  
                 }
-                
+
                 setCargando(false)
 
               }

@@ -30,6 +30,8 @@ function App() {
     return <Loader />
   }
 
+  console.log("user",user)
+
 
   return (
     <>

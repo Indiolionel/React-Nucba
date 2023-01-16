@@ -16,7 +16,7 @@ export default function Ordenes() {
 
   const [ordenes, setOrdenes] = useState(false)
 
-
+console.log("ordenes",ordenes)
   const onChange = (user) => {
     dispatch({ type: "login", value: user })
     dataOrders().then(setOrdenes)
