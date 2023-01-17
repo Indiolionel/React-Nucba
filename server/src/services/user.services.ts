@@ -14,6 +14,30 @@ export class UserService {
         }
     }
 
+    public static async getAll() {
+        try {
+            const users = await prisma.user.findMany();
+
+            return { success: true, users };
+        } catch (error) {
+            console.log({ error });
+            return { sucess: false, error: 'Hubo un error' };
+        }
+    }
+
+    public static async getById(id:any) {
+        try {
+            const user = await prisma.user.findMany({ where: { id } });
+
+            return { success: true, user };
+        } catch (error) {
+            console.log({ error });
+            return { sucess: false, error: 'Hubo un error' };
+        }
+    }
+
+    
+
     public static async deleteById(id: any) {
         try {
             const deleted = await prisma.user.delete({ where: { id } });
@@ -24,4 +48,6 @@ export class UserService {
             return { sucess: false, error: 'Hubo un error, creo que el id no es el correcto' };
         }
     }
+
+
 }

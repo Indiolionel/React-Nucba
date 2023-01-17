@@ -13,13 +13,15 @@ export class UserControllers {
     }
 
     public static async getById(req: Request, res: Response) {
+        const user = await UserService.getById(+req.params.id);
 
-      
-
+        res.status(user.success ? 201 : 400).send(user);
     }
 
     public static async getAll(req: Request, res: Response) {
-        
+        const users = await UserService.getAll();
+
+		res.status(users.success ? 201 : 400).send(users);
     }
 
     public static async delete(req: Request, res: Response) {
