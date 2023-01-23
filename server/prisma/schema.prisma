@@ -10,18 +10,15 @@ datasource db {
 model User {
   id        Int     @id @default(autoincrement())
   email     String  @unique
+  password  String
   firstname String
-  lastname  String
-  dni       String
-  phone     String
   orders    Order[]
 }
 
 model Order {
-  id      Int    @id @default(autoincrement())
-  name    String
-  price   Int
-  order   User   @relation(fields: [userId], references: [id])
-  orderId Int    @unique
-  userId  Int
+  id     Int    @id @default(autoincrement())
+  name   String
+  price  Int
+  user   User   @relation(fields: [userId], references: [id])
+  userId Int
 }

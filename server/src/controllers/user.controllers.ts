@@ -7,6 +7,9 @@ export class UserControllers {
     constructor () {}
 
     public static async create (req: Request, res: Response) {
+
+        
+        
         const created = await UserService.create(req.body);
 
 		res.status(created.success ? 201 : 400).send(created);
@@ -24,6 +27,14 @@ export class UserControllers {
 		res.status(users.success ? 201 : 400).send(users);
     }
 
+    // getOrderByIdUser
+
+    public static async getOrderByIdUser(req: Request, res: Response) {
+        const orders = await UserService.getOrderByIdUser(+req.params.id);
+
+        res.status(orders.success ? 201 : 400).send(orders);
+    }
+
     public static async delete(req: Request, res: Response) {
         
         const deleted = await UserService.deleteById(+req.params.id)
@@ -31,5 +42,11 @@ export class UserControllers {
         res.status(deleted.success ? 200 : 404).send(deleted);
     }
     
+    public static async login(req: Request, res: Response) {
+        
+        const login = await UserService.login(req.body)
+
+        res.status(login.success ? 200 : 404).send(login);
+    }
 
 }

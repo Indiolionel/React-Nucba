@@ -25,7 +25,7 @@ export default function Registrer() {
 
   const SignupSchema = Yup.object().shape({
     fullname: Yup.string()
-      .matches(/^[a-z]+$/, 'Solo letras') 
+      .matches(/^[a-z/A-Z]+$/, 'Solo letras')
       .min(4, 'Minimo 4 caracteres')
       .max(20, 'Maximo 20 caracteres')
       .required('Required'),
@@ -74,29 +74,41 @@ export default function Registrer() {
             validationSchema={SignupSchema}
             onSubmit={async (values, { resetForm }) => {
               setCargando(true)
-              const { email, password, fullname } = values;
-              try {
-                await userRegistration(email, password, fullname)
+              let response;
 
+              try {
+
+                const { email, password, fullname } = values;
+
+                response = await userRegistration(email, password, fullname)
+                const user = response.success && response.user
+                const { token } = user
+                swal({
+                  position: 'top-end',
+                  icon: 'success',
+                  title: 'Cuenta creada con exito!!',
+                  showConfirmButton: false,
+                  timer: 1500
+                })
                 navigate("/login")
 
 
               } catch (error) {
-                if (error.code === "auth/email-already-in-use") {
-                  
-                    swal({
-                      title: 'El email ya tiene una cuenta creada',
-                      showClass: {
-                        popup: 'animate__animated animate__fadeInDown'
-                      },
-                      hideClass: {
-                        popup: 'animate__animated animate__fadeOutUp'
-                      },
-                      timer: 1500
-                    })
-                    resetForm({ values: { ...values, email: "" } })
+                if (response.code === "auth/email-already-in-use") {
 
-                  
+                  swal({
+                    title: 'El email ya tiene una cuenta creada',
+                    showClass: {
+                      popup: 'animate__animated animate__fadeInDown'
+                    },
+                    hideClass: {
+                      popup: 'animate__animated animate__fadeOutUp'
+                    },
+                    timer: 1500
+                  })
+                  resetForm({ values: { ...values, email: "" } })
+
+
                 }
 
                 setCargando(false)
@@ -141,7 +153,7 @@ export default function Registrer() {
                     <Button pad="px-20 sm:px-24" >
                       <span class="absolute inset-y-0 left-0 flex items-center pl-3">
                         <svg className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                          <path fill-rule="evenodd" d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z" clip-rule="evenodd" />
+                          <path fillRule="evenodd" d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z" clip-rule="evenodd" />
                         </svg>
                       </span>
                       Registrar

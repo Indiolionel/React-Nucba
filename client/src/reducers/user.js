@@ -4,6 +4,7 @@ const initialState = null
 const userNull = {
   name:"",
   email:"",
+  id:"",
   photoURL:""
 }
 export function user(state = initialState, action) {
@@ -20,8 +21,9 @@ export function user(state = initialState, action) {
       return (userNull)
 
       case 'load-user-localStorage':
-        
+
         const value = localStorage.getItem("user")
+        console.log("Esvalue:",value)
         return value ? JSON.parse(value) : userNull
 
     default:

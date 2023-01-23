@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import CardOrders from '../componentes/cardOrders'
 import Loader from '../componentes/loader'
 import Orders from '../componentes/Orders'
-import { dataOrders, onAuthStateChange } from '../firebase/firebase-utils'
+import { dataOrders } from '../firebase/firebase-utils'
 
 export default function Ordenes() {
 
@@ -17,15 +17,19 @@ export default function Ordenes() {
   const [ordenes, setOrdenes] = useState(false)
 
 console.log("ordenes",ordenes)
-  const onChange = (user) => {
-    dispatch({ type: "login", value: user })
-    dataOrders().then(setOrdenes)
-  }
+  // const onChange = (user) => {
+  //   dispatch({ type: "login", value: user })
+  //   dataOrders(user.id).then(setOrdenes)
+  // }
 
   useEffect(() => {
-
-    return onAuthStateChange(onChange)
-
+    dispatch({ type: "login", value: user })
+    try {
+      dataOrders(user.id).then(setOrdenes)
+    } catch (error) {
+      console.log(error)
+    }
+    
 
   }, [])
 
@@ -40,7 +44,7 @@ console.log("ordenes",ordenes)
   return (
     <>
 
-      {ordenes.map((ordenes,index) => <CardOrders ordenes={ordenes} oddEven={index} />)}
+      {ordenes.map((order,index) => <CardOrders order={order} oddEven={index} />)}
 
       <Orders showModal={showModal} onClose={onClose} />
 

@@ -1,25 +1,4 @@
 
-import { initializeApp } from "firebase/app";
-import { getFirestore, doc, setDoc, getDoc, getDocs, query, collection } from "firebase/firestore"
-import {
-  getAuth,
-  signOut,
-  GoogleAuthProvider,
-  signInWithPopup,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  sendPasswordResetEmail,
-  sendEmailVerification,
-  onAuthStateChanged
-} from "firebase/auth"
-import swal from 'sweetalert';
-import { create } from "yup/lib/Reference";
-
-
-
-
-
-
 
 
 
@@ -37,7 +16,7 @@ export const onAuthStateChange = (onChange) => {
 
 
 export const createUserProfile = async (userAuthenticated, name) => {
-console.log("createUserProfile(userAuthenticated, name)")
+  console.log("createUserProfile(userAuthenticated, name)")
   return null;
 };
 
@@ -45,42 +24,71 @@ console.log("createUserProfile(userAuthenticated, name)")
 // User Registration
 
 export const userRegistration = async (email, password, name) => {
-  console.log("Fc: userRegistration = async (email, password, name)")
+ 
+  const url = "http://localhost:5000/user";
 
-  return null;
+  const data = await fetch(url, {
+    method: "POST",
+    body: JSON.stringify({ email, password,firstname: name }),
+    headers: {
+      'Content-Type': 'application/json'
+    },
+  });
+
+  const response = await data.json()
+  console.log("respuesta del servidor",response)
+  
+
+  return response;
 
 };
 
 // traer nombre user 
 export const dataUser = async user => {
-    console.log("Fc:  dataUser = async user")
-    return null;
-  }
+  const url = "http://localhost:5000/user"
+  const data = await fetch(url);
+  const response = await data.json()
+  return response;
+}
 
 
 
 
 // traer Orders user 
 
-export const dataOrders = async () => {
-  console.log("Fc: dataOrders = async ()")
-  return null
+export const dataOrders = async (id) => {
+  
+  const url = `http://localhost:5000/user/order/${id}`
+  const data = await fetch(url);
+  const response = await data.json()
+  console.log("Ordenes:",response)
+  return response.orders
 }
 
 // mandar compra a firebase
 
 export const buy = async (paquete) => {
-  console.log ("Fc:  buy = async (paquete)")
+  console.log("Fc:  buy = async (paquete)")
   return null
 }
 
 
+
 // Sign-in with Email/Password
 export const loginLocal = async (email, password) => {
+  const url = "http://localhost:5000/user/login"
+  const data = await fetch(url, {
+    method: "POST",
+    body: JSON.stringify({ email, password }),
+    headers: {
+      'Content-Type': 'application/json'
+    },
+  });
+  const response = await data.json()
+  
+  
 
-  console.log("Fc:  loginLocal = async (email, password) ")
-
-  return null
+  return response;
 };
 
 export const signOutUser = () => {

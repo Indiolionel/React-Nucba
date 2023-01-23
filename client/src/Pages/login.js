@@ -7,7 +7,7 @@ import Button from '../componentes/button'
 import Loader from '../componentes/loader'
 import Orders from '../componentes/Orders'
 import *  as  Yup from 'yup';
-import {  dataUser, loginLocal, signInGoogle } from '../firebase/firebase-utils'
+import { dataUser, loginLocal, signInGoogle } from '../firebase/firebase-utils'
 import { Field, Form, Formik } from 'formik'
 import Input from '../componentes/input'
 
@@ -54,7 +54,7 @@ export default function Login() {
 
     }, [])
 
-  
+
 
 
 
@@ -71,21 +71,25 @@ export default function Login() {
                     </div>
                     <Formik
 
+
                         initialValues={{
                             email: '',
                             password: ''
 
                         }}
                         validationSchema={SignupSchema}
-                        onSubmit={async (values, {resetForm}) => {
+                        onSubmit={async (values, { resetForm }) => {
+                            let response;
                             try {
                                 setCargando(true)
                                 const { email, password } = values
-                                await loginLocal(email, password)
-                                const { user } = await signInWithEmailAndPassword( email, password);
-                                const { name, email: _email, photoURL } = await dataUser(user)
+                                // si response.succes = false entonces muestro el error
+                                // si es true devuelvo el user
+                                response = await loginLocal(email, password)
+                                const user = response.success && response.user
+                                const { firstname, email: _email, id } = user
 
-                                dispatch({ type: "login", value: { name, email: _email, photoURL } })
+                                dispatch({ type: "login", value: { name: firstname, email: _email, id } })
                                 swal({
                                     position: 'top-end',
                                     icon: 'success',
@@ -97,8 +101,8 @@ export default function Login() {
 
                             } catch (err) {
 
-                                if (err.code == "auth/wrong-password")
-                                  {  swal({
+                                if (response.code == "auth/wrong-password") {
+                                    swal({
                                         title: 'La contraseña es incorrecta',
                                         showClass: {
                                             popup: 'animate__animated animate__fadeInDown'
@@ -108,11 +112,11 @@ export default function Login() {
                                         },
                                         timer: 1500
                                     })
-                                    resetForm({values:{...values,password:""}})
+                                    resetForm({ values: { ...values, password: "" } })
 
                                 }
-                                if (err.code == "auth/user-not-found")
-                                    {swal({
+                                if (response.code == "auth/user-not-found") {
+                                    swal({
                                         title: 'El email no tiene una cuenta creada',
                                         showClass: {
                                             popup: 'animate__animated animate__fadeInDown'
@@ -122,24 +126,14 @@ export default function Login() {
                                         },
                                         timer: 1500
                                     })
-                                    resetForm({values:{email:"",password:""}})
+                                    resetForm({ values: { email: "", password: "" } })
 
                                 }
-                                if (err.code == "auth/invalid-email")
-                                    swal({
-                                        title: 'El email es invalido',
-                                        showClass: {
-                                            popup: 'animate__animated animate__fadeInDown'
-                                        },
-                                        hideClass: {
-                                            popup: 'animate__animated animate__fadeOutUp'
-                                        },
-                                        timer: 1500
-                                    })
+                              
 
                                 setCargando(false)
                             }
-                            
+
                             setCargando(false)
                         }}
                     >
@@ -163,7 +157,7 @@ export default function Login() {
                                     <div class="flex items-center justify-between">
                                         <div class="flex items-center">
                                             <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500" />
-                                            <label for="remember-me" class="ml-2 block text-sm text-gray-900">Recordarme</label>
+                                            <label htmlFor="remember-me" class="ml-2 block text-sm text-gray-900">Recordarme</label>
                                         </div>
 
                                         <div class="text-sm">
@@ -172,10 +166,10 @@ export default function Login() {
                                     </div>
 
                                     <div className='flex flex-col justify-center items-center'>
-                                        <Button  pad="px-12 sm:px-24">
+                                        <Button pad="px-12 sm:px-24">
                                             <span class="absolute inset-y-0 left-0 flex items-center pl-3">
                                                 <svg className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                                    <path fill-rule="evenodd" d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z" clip-rule="evenodd" />
+                                                    <path fillRule="evenodd" d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z" clip-rule="evenodd" />
                                                 </svg>
                                             </span>
                                             Ingresar
