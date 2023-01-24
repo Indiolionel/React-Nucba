@@ -5,6 +5,7 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { signOutUser } from '../firebase/firebase-utils'
+import swal from 'sweetalert'
 
 
 export default function NavBar() {
@@ -28,8 +29,19 @@ export default function NavBar() {
 
   const { name, photoURL } = useSelector(state => state.user)
   const loginoutHandler = () => {
-    const aceptar = window.confirm("Estas seguro que quieres salir??")
-    aceptar && dispatch({ type: "logout" })
+    // const aceptar = window.confirm("Estas seguro que quieres salir??")
+    // aceptar && dispatch({ type: "logout" })
+    swal({
+      title: "Estas seguro que deseas cerrar sesion?",
+      text: "Se cerrara la sesion",
+      icon: "warning",
+      buttons: ["cancel","ok"],
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) dispatch({ type: "logout" });
+     
+    });
     signOutUser()
     return navigate("/")
   }
@@ -102,7 +114,7 @@ export default function NavBar() {
                   className="bg-gray-800 p-1 flex flex-row rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
                 >
                   <span className="sr-only">View notifications</span>
-                  <svg className="h-6 w-6 text-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z" />  <circle cx="9" cy="19" r="2" />  <circle cx="17" cy="19" r="2" />  <path d="M3 3h2l2 12a3 3 0 0 0 3 2h7a3 3 0 0 0 3 -2l1 -7h-15.2" /></svg>
+                  <svg className="h-6 w-6 text-white" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">  <path stroke="none" d="M0 0h24v24H0z" />  <circle cx="9" cy="19" r="2" />  <circle cx="17" cy="19" r="2" />  <path d="M3 3h2l2 12a3 3 0 0 0 3 2h7a3 3 0 0 0 3 -2l1 -7h-15.2" /></svg>
                   <span id="monto-carrito">{total}</span>
 
                 </button>
@@ -114,8 +126,8 @@ export default function NavBar() {
                     type="button"
                     className="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
                   >
-                    {photoURL ? <img className='rounded-full w-10' src={photoURL}></img> : <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    {photoURL ? <img className='rounded-full w-10' src={photoURL}></img> : <svg className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                     </svg>}
                   </button>
                   {hidden !== false ?

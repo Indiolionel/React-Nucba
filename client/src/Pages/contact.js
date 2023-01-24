@@ -78,9 +78,9 @@ export default function Contact() {
                 >
                     {({ errors, touched }) => (
 
-                        <div class="w-full max-w-md space-y-8">
+                        <div className="w-full max-w-md space-y-8">
                             <div>
-                                <img class="mx-auto w-44 h-auto" src="./CONCIENCIA.png" alt="Conciencia" />
+                                <img className="mx-auto w-44 h-auto" src="./CONCIENCIA.png" alt="Conciencia" />
                                 <h1 className='"mt-6 text-center text-3xl font-bold tracking-tight text-gray-900"'>Contact</h1>
                             </div>
                             <Form className='flex flex-col mt-8 space-y-6'>

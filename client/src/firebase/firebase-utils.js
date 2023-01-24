@@ -1,4 +1,4 @@
-
+import { useSelector } from "react-redux"
 
 
 
@@ -24,20 +24,20 @@ export const createUserProfile = async (userAuthenticated, name) => {
 // User Registration
 
 export const userRegistration = async (email, password, name) => {
- 
+
   const url = "http://localhost:5000/user";
 
   const data = await fetch(url, {
     method: "POST",
-    body: JSON.stringify({ email, password,firstname: name }),
+    body: JSON.stringify({ email, password, firstname: name }),
     headers: {
       'Content-Type': 'application/json'
     },
   });
 
   const response = await data.json()
-  console.log("respuesta del servidor",response)
-  
+  console.log("respuesta del servidor", response)
+
 
   return response;
 
@@ -57,19 +57,36 @@ export const dataUser = async user => {
 // traer Orders user 
 
 export const dataOrders = async (id) => {
-  
+
   const url = `http://localhost:5000/user/order/${id}`
   const data = await fetch(url);
   const response = await data.json()
-  console.log("Ordenes:",response)
+  console.log("Ordenes:", response)
   return response.orders
 }
 
 // mandar compra a firebase
 
-export const buy = async (paquete) => {
-  console.log("Fc:  buy = async (paquete)")
-  return null
+export const buy = async (paquete, user) => {
+
+  const url = `http://localhost:5000/order`
+  const { buys } = paquete
+  const finalBuys = buys.map(({id, ...buy}) => buy)
+  console.log("fianlBuys",finalBuys)
+  const { id } = user
+  const data = await fetch(url, {
+    method: "POST",
+    body: JSON.stringify({ buys: finalBuys, shipping: false, userId: id }),
+    headers: {
+      'Content-Type': 'application/json'
+    },
+  });
+  const response = await data.json()
+
+  console.log("Respuesta del servidor:", response)
+  console.log(paquete)
+
+  return response
 }
 
 
@@ -85,8 +102,8 @@ export const loginLocal = async (email, password) => {
     },
   });
   const response = await data.json()
-  
-  
+
+
 
   return response;
 };

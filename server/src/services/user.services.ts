@@ -63,7 +63,12 @@ export class UserService {
   public static async getOrderByIdUser(id: any) {
         try {
             const user = await prisma.user.findUnique(
-                { where: { id }, include: { orders: true } },
+                { where: { id }, include: { 
+                    orders: {
+                        include:{buys:true}
+                    },
+                    
+                } }
 
             );
             if (!user) return { success: false, error:"Usuario inexistente" }; 

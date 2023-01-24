@@ -3,230 +3,184 @@
     "id": 1,
     "category": "Aromaticas",
     "name": "Menta",
-    "href": "#",
     "quantity": 0,
-    "price": "1256",
-    "imageSrc": "https://imag.bonviveur.com/hojas-frescas-de-hierbabuena.jpg",
-    "imageAlt": "Front of mens Basic Tee in black."
+    "price": 1256,
+    "imageSrc": "https://imag.bonviveur.com/hojas-frescas-de-hierbabuena.jpg"
   },
   {
     "id": 2,
     "category": "Aromaticas",
     "name": "Albahaca",
-    "href": "#",
     "quantity": 0,
-    "price": "2356",
-    "imageSrc": "https://www.flores.ninja/wp-content/uploads/2016/07/La-albahaca.jpg",
-    "imageAlt": "Front of mens Basic Tee in black."
+    "price": 2356,
+    "imageSrc": "https://www.flores.ninja/wp-content/uploads/2016/07/La-albahaca.jpg"
   },
   {
     "id": 3,
     "category": "Aromaticas",
     "name": "Romero",
-    "href": "#",
     "quantity": 0,
-    "price": "1222",
-    "imageSrc": "https://ecocosas.com/wp-content/uploads/2020/06/infusion-de-romero-1-1024x683.jpg",
-    "imageAlt": "Front of mens Basic Tee in black."
+    "price": 1222,
+    "imageSrc": "https://ecocosas.com/wp-content/uploads/2020/06/infusion-de-romero-1-1024x683.jpg"
   },
   {
     "id": 4,
     "category": "Aromaticas",
     "name": "Oregano",
-    "href": "#",
     "quantity": 0,
-    "price": "3245",
-    "imageSrc": "https://cdn2.cocinadelirante.com/sites/default/files/styles/gallerie/public/planta-oregano-en-casa-hanslinde.jpg",
-    "imageAlt": "Front of mens Basic Tee in black."
+    "price": 3245,
+    "imageSrc": "https://cdn2.cocinadelirante.com/sites/default/files/styles/gallerie/public/planta-oregano-en-casa-hanslinde.jpg"
   },
   {
     "id": 5,
     "category": "Aromaticas",
     "name": "Laurel",
-    "href": "#",
     "quantity": 0,
-    "price": "999",
-    "imageSrc": "https://i.blogs.es/8a550a/qie-es-el-laurel/450_1000.jpg",
-    "imageAlt": "Front of mens Basic Tee in black."
+    "price": 999,
+    "imageSrc": "https://i.blogs.es/8a550a/qie-es-el-laurel/450_1000.jpg"
   },
   {
     "id": 6,
     "category": "Aromaticas",
     "name": "Tomillo",
-    "href": "#",
     "quantity": 0,
-    "price": "888",
-    "imageSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Planta_de_tomillo.jpg/240px-Planta_de_tomillo.jpg",
-    "imageAlt": "Front of mens Basic Tee in black."
+    "price": 888,
+    "imageSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Planta_de_tomillo.jpg/240px-Planta_de_tomillo.jpg"
   },
   {
     "id": 7,
     "category": "Aromaticas",
     "name": "Perejil",
-    "href": "#",
     "quantity": 0,
-    "price": "3456",
-    "imageSrc": "https://t1.uc.ltmcdn.com/es/posts/6/3/8/como_hacer_jugo_de_perejil_28836_paso_1_600.jpg",
-    "imageAlt": "Front of mens Basic Tee in black."
+    "price": 3456,
+    "imageSrc": "https://t1.uc.ltmcdn.com/es/posts/6/3/8/como_hacer_jugo_de_perejil_28836_paso_1_600.jpg"
   },
   {
     "id": 8,
     "category": "Aromaticas",
     "name": "Salvia",
-    "href": "#",
     "quantity": 0,
-    "price": "777",
-    "imageSrc": "  https://pymstatic.com/27995/conversions/propiedades-de-salvia-wide.jpg",
-    "imageAlt": "Front of mens Basic Tee in black."
+    "price": 777,
+    "imageSrc": "  https://pymstatic.com/27995/conversions/propiedades-de-salvia-wide.jpg"
   },
   {
     "id": 9,
     "category": "Arboles",
     "name": "Roble",
-    "href": "#",
     "quantity": 0,
-    "price": "435",
-    "imageSrc": "https://mejorconsalud.as.com/wp-content/uploads/2022/03/arbol-roble.jpg",
-    "imageAlt": "Front of mens Basic Tee in black."
+    "price": 435,
+    "imageSrc": "https://mejorconsalud.as.com/wp-content/uploads/2022/03/arbol-roble.jpg"
   },
   {
     "id": 10,
     "category": "Arboles",
     "name": "Olmo",
-    "href": "#",
     "quantity": 0,
-    "price": "4455",
-    "imageSrc": "https://www.viveroazahares.com.ar/web/images//producto/forestales/olmo/semillas-de-arbol-olmo-20-D_NQ_NP_891453-MLA28338567783_102018-F.jpg",
-    "imageAlt": "Front of mens Basic Tee in black."
+    "price": 4455,
+    "imageSrc": "https://www.viveroazahares.com.ar/web/images//producto/forestales/olmo/semillas-de-arbol-olmo-20-D_NQ_NP_891453-MLA28338567783_102018-F.jpg"
   },
   {
     "id": 11,
     "category": "Arboles",
     "name": "Sauce lloron",
-    "href": "#",
     "quantity": 0,
-    "price": "755",
-    "imageSrc": "https://www.serargentino.com/public/images/2020/09/15998541670-sauce-llorn-773x458.jpg",
-    "imageAlt": "Front of mens Basic Tee in black."
+    "price": 755,
+    "imageSrc": "https://www.serargentino.com/public/images/2020/09/15998541670-sauce-llorn-773x458.jpg"
   },
   {
     "id": 12,
     "category": "Arboles",
     "name": "Alamo",
-    "href": "#",
     "quantity": 0,
-    "price": "2499",
-    "imageSrc": "https://cdn.ciudad.com.ar/sites/default/files/styles/grizzly_galeria/public/nota/2018/06/14/alamo.png?itok=oHVu2wHX",
-    "imageAlt": "Front of mens Basic Tee in black."
+    "price": 2499,
+    "imageSrc": "https://cdn.ciudad.com.ar/sites/default/files/styles/grizzly_galeria/public/nota/2018/06/14/alamo.png?itok=oHVu2wHX"
   },
   {
     "id": 13,
     "category": "Arboles",
     "name": "Pino",
-    "href": "#",
     "quantity": 0,
-    "price": "1767",
-    "imageSrc": "https://i0.wp.com/www.arbolesurbanos.com.ar/wp-content/uploads/2020/03/PINUS-MONTICOLA-EJEMPLAR-ADULTO.jpg?ssl=1",
-    "imageAlt": "Front of mens Basic Tee in black."
+    "price": 1767,
+    "imageSrc": "https://i0.wp.com/www.arbolesurbanos.com.ar/wp-content/uploads/2020/03/PINUS-MONTICOLA-EJEMPLAR-ADULTO.jpg?ssl=1"
   },
   {
     "id": 14,
     "category": "Arboles",
     "name": "Palmera",
-    "href": "#",
     "quantity": 0,
-    "price": "2199",
-    "imageSrc": "https://http2.mlstatic.com/D_NQ_NP_929675-MLA44536917724_012021-W.jpg",
-    "imageAlt": "Front of mens Basic Tee in black."
+    "price": 2199,
+    "imageSrc": "https://http2.mlstatic.com/D_NQ_NP_929675-MLA44536917724_012021-W.jpg"
   },
   {
     "id": 15,
     "category": "Ligustrina",
     "name": "Ampelosis",
-    "href": "#",
     "quantity": 0,
-    "price": "678",
-    "imageSrc": "https://www.guiadejardineria.com/wp-content/uploads/2018/07/Ampelopsis2.jpg",
-    "imageAlt": "Front of mens Basic Tee in black."
+    "price": 678,
+    "imageSrc": "https://www.guiadejardineria.com/wp-content/uploads/2018/07/Ampelopsis2.jpg"
   },
   {
     "id": 16,
     "category": "Ligustrina",
     "name": "Santa rita",
-    "href": "#",
     "quantity": 0,
-    "price": "989",
-    "imageSrc": "https://i.pinimg.com/736x/fe/ad/b9/feadb9e52ac087fdcd648dae33cd9944--santa-rita-magenta.jpg",
-    "imageAlt": "Front of mens Basic Tee in black."
+    "price": 989,
+    "imageSrc": "https://i.pinimg.com/736x/fe/ad/b9/feadb9e52ac087fdcd648dae33cd9944--santa-rita-magenta.jpg"
   },
   {
     "id": 17,
     "category": "Ligustrina",
     "name": "Duranta golden",
-    "href": "#",
     "quantity": 0,
-    "price": "1245",
-    "imageSrc": "https://i.pinimg.com/originals/3b/19/7c/3b197ce4441f5cdaef00f3e9f86ed6b2.jpg",
-    "imageAlt": "Front of mens Basic Tee in black."
+    "price": 1245,
+    "imageSrc": "https://i.pinimg.com/originals/3b/19/7c/3b197ce4441f5cdaef00f3e9f86ed6b2.jpg"
   },
   {
     "id": 18,
     "category": "Ligustrina",
     "name": "Corona de novia",
-    "href": "#",
     "quantity": 0,
-    "price": "1089",
-    "imageSrc": "https://upload.wikimedia.org/wikipedia/commons/4/46/Corona_de_novia.jpg",
-    "imageAlt": "Front of mens Basic Tee in black."
+    "price": 1089,
+    "imageSrc": "https://upload.wikimedia.org/wikipedia/commons/4/46/Corona_de_novia.jpg"
   },
   {
     "id": 19,
     "category": "Suculentas",
     "name": "Aloe vera",
-    "href": "#",
     "quantity": 0,
-    "price": "2100",
-    "imageSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Aloe_vera_-_Agri-Horticultural_Society_of_India_-_Alipore_-_Kolkata_2013-01-05_2327.JPG/800px-Aloe_vera_-_Agri-Horticultural_Society_of_India_-_Alipore_-_Kolkata_2013-01-05_2327.JPG",
-    "imageAlt": "Front of mens Basic Tee in black."
+    "price": 2100,
+    "imageSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Aloe_vera_-_Agri-Horticultural_Society_of_India_-_Alipore_-_Kolkata_2013-01-05_2327.JPG/800px-Aloe_vera_-_Agri-Horticultural_Society_of_India_-_Alipore_-_Kolkata_2013-01-05_2327.JPG"
   },
   {
     "id": 20,
     "category": "Suculentas",
     "name": "Cactus",
-    "href": "#",
     "quantity": 0,
-    "price": "3255",
-    "imageSrc": "https://media-cdn.tripadvisor.com/media/photo-s/07/b7/e2/ff/desert-botanical-garden.jpg",
-    "imageAlt": "Front of mens Basic Tee in black."
+    "price": 3255,
+    "imageSrc": "https://media-cdn.tripadvisor.com/media/photo-s/07/b7/e2/ff/desert-botanical-garden.jpg"
   },
   {
     "id": 21,
     "category": "Suculentas",
     "name": "Green peace",
-    "href": "#",
     "quantity": 0,
-    "price": "2000",
-    "imageSrc": "https://cf.shopee.ph/file/bd9586489b01048b9d1f89c24dc0332c",
-    "imageAlt": "Front of mens Basic Tee in black."
+    "price": 2000,
+    "imageSrc": "https://cf.shopee.ph/file/bd9586489b01048b9d1f89c24dc0332c"
   },
   {
     "id": 22,
     "category": "Suculentas",
     "name": "Candelabra cactus",
-    "href": "#",
     "quantity": 0,
-    "price": "788",
-    "imageSrc": "https://horticultureunlimited.com/wp-content/uploads/2016/01/Myrtillocactus-cochal-Candelabra-Cactus-2.jpg",
-    "imageAlt": "Front of mens Basic Tee in black."
+    "price": 788,
+    "imageSrc": "https://horticultureunlimited.com/wp-content/uploads/2016/01/Myrtillocactus-cochal-Candelabra-Cactus-2.jpg"
   },
   {
     "id": 23,
     "category": "Suculentas",
     "name": "Flora viva",
-    "href": "#",
     "quantity": 0,
-    "price": "657",
-    "imageSrc": "https://floravivaperuibe.com/wp-content/uploads/2020/08/Suculenta-Peruibe-01-930x620.jpg",
-    "imageAlt": "Front of mens Basic Tee in black."
+    "price": 657,
+    "imageSrc": "https://floravivaperuibe.com/wp-content/uploads/2020/08/Suculenta-Peruibe-01-930x620.jpg"
   }
 ]

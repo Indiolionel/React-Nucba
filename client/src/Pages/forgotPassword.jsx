@@ -37,11 +37,11 @@ export default function ForgotPassword() {
     return (
         <>
             {cargando && <Loader />}
-            <div class="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-                <div class="w-full max-w-md space-y-8">
+            <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+                <div className="w-full max-w-md space-y-8">
                     <div>
-                        <img class="mx-auto w-44 h-auto" src="./CONCIENCIA.png" alt="Conciencia" />
-                        <h2 class="mt-2 text-center text-3xl font-bold tracking-tight text-gray-900">Reestablecer Contraseña</h2>
+                        <img className="mx-auto w-44 h-auto" src="./CONCIENCIA.png" alt="Conciencia" />
+                        <h2 className="mt-2 text-center text-3xl font-bold tracking-tight text-gray-900">Reestablecer Contraseña</h2>
 
                     </div>
 
@@ -69,7 +69,7 @@ export default function ForgotPassword() {
                     >
                         {({ errors, touched }) => (
 
-                            <div class="w-full max-w-md space-y-8">
+                            <div className="w-full max-w-md space-y-8">
 
                                 <Form className='flex flex-col mt-8 space-y-6'>
 
@@ -83,10 +83,10 @@ export default function ForgotPassword() {
 
 
                                     <div className='flex flex-col justify-center items-center'>
-                                        <Link to="/login" class="font-medium text-orange-600 hover:text-orange-500 mt-4 mb-12">¿Te acordaste de la contraseña?, volve!!</Link>
+                                        <Link to="/login" className="font-medium text-orange-600 hover:text-orange-500 mt-4 mb-12">¿Te acordaste de la contraseña?, volve!!</Link>
 
                                         <Button pad="px-12 sm:px-24" wit="w-44" >
-                                            <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                                            <span className="absolute inset-y-0 left-0 flex items-center pl-3">
                                                 <svg className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                                     <path fillRule="evenodd" d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z" clip-rule="evenodd" />
                                                 </svg>

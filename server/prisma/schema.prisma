@@ -16,9 +16,21 @@ model User {
 }
 
 model Order {
-  id     Int    @id @default(autoincrement())
-  name   String
-  price  Int
-  user   User   @relation(fields: [userId], references: [id])
-  userId Int
+  id       Int      @id @default(autoincrement())
+  shipping Boolean
+  date     DateTime @default(now())
+  user     User     @relation(fields: [userId], references: [id])
+  userId   Int
+  buys     Buy[]
+}
+
+model Buy {
+  id       Int    @id @default(autoincrement())
+  category String
+  imageSrc String
+  name     String
+  price    Int
+  quantity Int
+  order    Order  @relation(fields: [orderId], references: [id])
+  orderId  Int
 }
