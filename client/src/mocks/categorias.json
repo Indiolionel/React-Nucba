@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": "Aromaticas",
+    "imageSrc": "http://d3ugyf2ht6aenh.cloudfront.net/stores/913/526/products/aromaticas1-a74f7004ebf827263215884393838844-640-0.png"
+  },
+  {
+    "id": 2,
+    "name": "Arboles",
+    "imageSrc": "https://media.admagazine.com/photos/618a63af29327ed3de99d64d/master/w_1600%2Cc_limit/76701.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Ligustrina",
+    "imageSrc": "https://www.gtush.com/wp-content/uploads/2021/03/Ligustrina.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Suculentas",
+    "imageSrc": "https://www.clara.es/medio/2022/05/01/plantas-suculentas_c5127fbe_1280x720.jpg"
+  }
+]
