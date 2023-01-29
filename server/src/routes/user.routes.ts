@@ -1,11 +1,13 @@
 import { Router } from 'express';
 import { UserControllers } from '../controllers/user.controllers';
+import { getTokenFromRequest } from '../middleware/getToken';
 
 
 const router = Router();
 
 router.post('/', UserControllers.create);
-router.get('/', UserControllers.getAll);
+// @ts-ignore
+router.get('/',getTokenFromRequest, UserControllers.getAll);
 router.post('/login',UserControllers.login)
 router.get('/:id', UserControllers.getById);
 router.get('/order/:id', UserControllers.getOrderByIdUser);

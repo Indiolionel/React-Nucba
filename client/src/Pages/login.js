@@ -86,7 +86,8 @@ export default function Login() {
                                 // si response.succes = false entonces muestro el error
                                 // si es true devuelvo el user
                                 response = await loginLocal(email, password)
-                                const user = response.success && response.user
+                                console.log("response",response.data.user)
+                                const user = response.success && response.data.user
                                 const { firstname, email: _email, id } = user
 
                                 dispatch({ type: "login", value: { name: firstname, email: _email, id } })

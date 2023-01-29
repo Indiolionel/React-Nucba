@@ -1,4 +1,10 @@
 import { prisma } from "../index";
+import { JWTservice } from "./jwt.services";
+import bcrypt from 'bcrypt'
+
+
+
+
 
 export class UserService {
     constructor() { }
@@ -13,11 +19,13 @@ export class UserService {
 
         try {
             const emailDuplicate = await prisma.user.findUnique({ where: { email: data.email } });
-            console.log("emailCoincide:",emailDuplicate)
+            console.log("emailCoincide:", emailDuplicate)
             if (emailDuplicate) return { sucess: false, error: "El email ya tiene una cuenta creada", code: "auth/email-already-in-use" };
 
-
-            const user = await prisma.user.create({ data: { ...data } });
+            const salt = await bcrypt.genSalt(10)
+            const hashPassword = await bcrypt.hash(data.password, salt)
+            console.log("passwordHash", hashPassword)
+            const user = await prisma.user.create({ data: { ...data, password: hashPassword } });
 
             console.log("userCreado;", user)
 
@@ -35,6 +43,7 @@ export class UserService {
                 include: {
                     orders: true
                 },
+
             });
 
             return { success: true, users };
@@ -43,12 +52,12 @@ export class UserService {
             return { sucess: false, error: 'Hubo un error' };
         }
     }
+ 
 
     public static async getById(id: any) {
         try {
             const user = await prisma.user.findMany(
                 { where: { id }, include: { orders: true } },
-
             );
 
             return { success: true, user };
@@ -60,20 +69,21 @@ export class UserService {
 
     // getOrderByIdUser
 
-  public static async getOrderByIdUser(id: any) {
+    public static async getOrderByIdUser(id: any) {
         try {
             const user = await prisma.user.findUnique(
-                { where: { id }, include: { 
-                    orders: {
-                        include:{buys:true}
-                    },
-                    
-                } }
+                {
+                    where: { id }, include: {
+                        orders: {
+                            include: { buys: true }
+                        },
 
+                    }
+                }
             );
-            if (!user) return { success: false, error:"Usuario inexistente" }; 
+            if (!user) return { success: false, error: "Usuario inexistente" };
 
-            return { success: true, orders: user.orders }; 
+            return { success: true, orders: user.orders };
         } catch (error) {
             console.log({ error });
             return { sucess: false, error: 'Hubo un error' };
@@ -92,14 +102,23 @@ export class UserService {
     }
 
     public static async login(data: any) {
-        console.log("DataLogin:", data)
+
+        const { email } = data
+
         try {
             const user = await prisma.user.findUnique({ where: { email: data.email } });
             if (!user) return { sucess: false, error: 'No existe el email registrado', code: "auth/user-not-found" };
 
-            if (data.password !== user.password) return { sucess: false, error: 'Los datos ingresados son incorrectos', code: "auth/wrong-password" }
+            // if (data.password !== user.password) return { sucess: false, error: 'Los datos ingresados son incorrectos', code: "auth/wrong-password" }
 
-            return { success: true, user };
+            const token = JWTservice.sign({ id: user.id, email })
+            const isMatch = await bcrypt.compare(data.password, user.password)
+
+            if (!isMatch) {
+                return { sucess: false, error: 'Los datos ingresados son incorrectos', code: "auth/wrong-password" }
+            }
+
+            return { success: true, data: { token, user } };
         } catch (error) {
             console.log({ error });
             return { sucess: false, error: 'Hubo un error inesperado' };
