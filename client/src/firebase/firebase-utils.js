@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux"
 
 
+const urlRailway="https://react-nucba-production.up.railway.app"
 
 const mapUserFromFirebaseAuth = user => {
   console.log("Fc:mapUserFromFirebaseAuth (User) ")
@@ -25,7 +26,7 @@ export const createUserProfile = async (userAuthenticated, name) => {
 
 export const userRegistration = async (email, password, name) => {
 
-  const url = "http://localhost:5000/user";
+  const url = `${urlRailway}/user`;
 
   const data = await fetch(url, {
     method: "POST",
@@ -45,7 +46,7 @@ export const userRegistration = async (email, password, name) => {
 
 // traer nombre user 
 export const dataUser = async user => {
-  const url = "http://localhost:5000/user"
+  const url = `${urlRailway}/user`
   const data = await fetch(url);
   const response = await data.json()
   return response;
@@ -58,7 +59,7 @@ export const dataUser = async user => {
 
 export const dataOrders = async (id) => {
 
-  const url = `http://localhost:5000/user/order/${id}`
+  const url = `${urlRailway}/user/order/${id}`
   const data = await fetch(url);
   const response = await data.json()
   console.log("Ordenes:", response)
@@ -69,7 +70,7 @@ export const dataOrders = async (id) => {
 
 export const buy = async (paquete, user) => {
 
-  const url = `http://localhost:5000/order`
+  const url = `${urlRailway}/order`
   const { buys } = paquete
   const finalBuys = buys.map(({id, ...buy}) => buy)
   console.log("fianlBuys",finalBuys)
@@ -93,7 +94,7 @@ export const buy = async (paquete, user) => {
 
 // Sign-in with Email/Password
 export const loginLocal = async (email, password) => {
-  const url = "http://localhost:5000/user/login"
+  const url = `${urlRailway}/user/login`
   const data = await fetch(url, {
     method: "POST",
     body: JSON.stringify({ email, password }),
