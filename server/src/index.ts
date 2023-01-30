@@ -14,6 +14,7 @@ export const prisma = new PrismaClient();
 const server = express();
 const port = process.env.PORT;
 
+server.use(express.static('public'));
 server.use(express.json());
 server.use(cors());
 
