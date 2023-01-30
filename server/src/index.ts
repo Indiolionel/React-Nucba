@@ -23,5 +23,5 @@ server.use('/buy', buyRouter);
 
 
 server.listen(port, () => {
-	console.log(`Running on http://localhost:${port}`);
+	console.log(port);
 });
