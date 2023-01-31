@@ -50,4 +50,12 @@ export class UserControllers {
         res.status(login.success ? 200 : 404).send(login);
     }
 
+    public static async updateOne(req: Request, res: Response) {
+        
+        const user = await UserService.updateOne(req.params.id, req.body);
+
+        res.status(user.success ? 201 : 400).send(user);
+    }
+
+
 }

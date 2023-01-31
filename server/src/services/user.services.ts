@@ -124,5 +124,21 @@ export class UserService {
             return { sucess: false, error: 'Hubo un error inesperado' };
         }
     }
+    public static async updateOne(id: any, data: any) {
+        try {
+			const user = this.getById(id);
+			if (!user) return { success: false, error: 'No existe una cuenta con ese email' };
+
+			const modified = await prisma.user.update({
+				where: { id },
+				data: { ...data }
+			});
+			return { success: true, modified };
+		} catch (error) {
+			console.log({ error });
+			return { success: false, error: 'Hubo un error' };
+		}
+    }
+ 
 
 }
