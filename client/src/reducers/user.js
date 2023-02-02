@@ -23,7 +23,6 @@ export function user(state = initialState, action) {
       case 'load-user-localStorage':
 
         const value = localStorage.getItem("user")
-        console.log("Esvalue:",value)
         return value ? JSON.parse(value) : userNull
 
     default:

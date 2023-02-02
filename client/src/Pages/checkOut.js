@@ -47,7 +47,6 @@ export default function CheckOut() {
             timer: 2500
         })
         navigate('/');
-        console.log(user.id)
         e.preventDefault()
         return  buy(paquete,user)
         

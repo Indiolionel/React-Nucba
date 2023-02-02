@@ -31,7 +31,10 @@ export class BuyService {
 
     public static async getById(id: any) {
         try {
-            const buy = await prisma.buy.findMany({ where: { id } });
+            const buy = await prisma.buy.findUnique({ where: { id } });
+
+            if (!buy) return { success: false, error: "No existe el id de buy" };
+
 
             return { success: true, buy };
         } catch (error) {

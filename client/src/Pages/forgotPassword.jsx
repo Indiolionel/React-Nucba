@@ -8,12 +8,12 @@ import { resetPassword } from '../firebase/firebase-utils';
 import { Field, Form, Formik } from 'formik';
 import Input from '../componentes/input';
 import Loader from '../componentes/loader';
+import swal from 'sweetalert';
 
 
 
 
 export default function ForgotPassword() {
-
     const dispatch = useDispatch()
     const showModal = useSelector(state => state.modal)
     const navigate = useNavigate();
@@ -24,7 +24,13 @@ export default function ForgotPassword() {
 
     const SignupSchema = Yup.object().shape({
         email: Yup.string().email('Email invalido').required('Required'),
-
+        newPassword: Yup.string()
+            .min(6, 'Minimo 6 caracteres')
+            .max(14, 'Maximo 14 caracteres')
+            .required('Required'),
+        passwordCheck: Yup.string()
+            .oneOf([Yup.ref('newPassword'), null], 'La contraseña no coincide')
+            .required('Required'),
 
     });
 
@@ -48,15 +54,25 @@ export default function ForgotPassword() {
                     <Formik
                         initialValues={{
                             email: '',
+                            newPassword: '',
+                            passwordCheck: ''
 
                         }}
                         validationSchema={SignupSchema}
-                        onSubmit={async (values, {resetForm})  => {
-                            const { email } = values
+                        onSubmit={async (values, { resetForm }) => {
+                            const { email, newPassword } = values
 
                             try {
                                 setCargando(true)
-                                await resetPassword(email,resetForm)
+                                await resetPassword(email, newPassword, resetForm)
+                                swal({
+                                    position: 'top-end',
+                                    icon: 'success',
+                                    title: 'Contraseña reestablecida',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                })
+                                navigate('/login');
 
                             } catch (error) {
                                 setCargando(false)
@@ -78,6 +94,16 @@ export default function ForgotPassword() {
                                     {errors.email && touched.email ? (
 
                                         <div className='text-red-600'>{errors.email}</div>
+                                    ) : null}
+                                    <Field style={errors.newPassword && { border: "solid 1px rgb(214,47,39)" }} name="newPassword" type="password" placeholder="New Password" as={Input} />
+                                    {errors.newPassword && touched.newPassword ? (
+
+                                        <div className='text-red-600'>{errors.newPassword}</div>
+                                    ) : null}
+                                    <Field style={errors.passwordCheck && { border: "solid 1px rgb(214,47,39)" }} name="passwordCheck" type="password" placeholder="Confirm Password" as={Input} />
+                                    {errors.passwordCheck && touched.passwordCheck ? (
+
+                                        <div className='text-red-600'>{errors.passwordCheck}</div>
                                     ) : null}
 
 

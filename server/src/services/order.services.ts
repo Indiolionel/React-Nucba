@@ -7,6 +7,7 @@ export class OrderService {
         const { shipping, userId, buys } = data;
         try {
             const order = await prisma.order.create(
+                
                 {
                     data: {
                         shipping,
@@ -15,7 +16,7 @@ export class OrderService {
                     },
 
                 });
-
+                
             return { success: true, order };
         } catch (error) {
             console.log({ error });
@@ -45,7 +46,10 @@ export class OrderService {
 
     public static async getById(id: any) {
         try {
-            const order = await prisma.order.findMany({ where: { id } });
+            const order = await prisma.order.findUnique({ where: { id } });
+
+            if (!order) return { success: false, error: "No existe el id de order" };
+
 
             return { success: true, order };
         } catch (error) {

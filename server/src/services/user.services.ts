@@ -10,24 +10,14 @@ export class UserService {
     constructor() { }
 
     public static async create(data: any) {
-        // try {
-        //   aca intento obtener el usuario con el email, usando findunique parametro email
-        // } catch (error) {
-        // si entra aca, no existe el email, por lo tanto:
-        console.log("llegada del dato:", data)
-
-
+      
         try {
             const emailDuplicate = await prisma.user.findUnique({ where: { email: data.email } });
-            console.log("emailCoincide:", emailDuplicate)
             if (emailDuplicate) return { sucess: false, error: "El email ya tiene una cuenta creada", code: "auth/email-already-in-use" };
 
             const salt = await bcrypt.genSalt(10)
             const hashPassword = await bcrypt.hash(data.password, salt)
-            console.log("passwordHash", hashPassword)
             const user = await prisma.user.create({ data: { ...data, password: hashPassword } });
-
-            console.log("userCreado;", user)
 
             return { success: true, user };
         } catch (error) {
@@ -56,9 +46,10 @@ export class UserService {
 
     public static async getById(id: any) {
         try {
-            const user = await prisma.user.findMany(
+            const user = await prisma.user.findUnique(
                 { where: { id }, include: { orders: true } },
             );
+            if (!user) return { sucess: false, error: 'No existe ese id de usuario' };
 
             return { success: true, user };
         } catch (error) {
@@ -124,14 +115,20 @@ export class UserService {
             return { sucess: false, error: 'Hubo un error inesperado' };
         }
     }
-    public static async updateOne(id: any, data: any) {
-        try {
-			const user = this.getById(id);
-			if (!user) return { success: false, error: 'No existe una cuenta con ese email' };
 
+   
+    public static async updateOne(email: string, data: any) {
+        try {
+			const user = await prisma.user.findUnique(
+                { where: { email } },
+            );
+			if (!user) return { success: false, error: 'No existe una cuenta con ese email' };
+            const {id} = user
+            const salt = await bcrypt.genSalt(10)
+            const hashPassword = await bcrypt.hash(data.password, salt)
 			const modified = await prisma.user.update({
 				where: { id },
-				data: { ...data }
+				data: { ...data ,password:hashPassword }
 			});
 			return { success: true, modified };
 		} catch (error) {

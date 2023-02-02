@@ -22,7 +22,6 @@ export class UserControllers {
     }
 
     public static async getAll(req: Request, res: Response) {
-        console.log({req})
         const users = await UserService.getAll();
 
 		res.status(users.success ? 201 : 400).send(users);
@@ -52,7 +51,7 @@ export class UserControllers {
 
     public static async updateOne(req: Request, res: Response) {
         
-        const user = await UserService.updateOne(req.params.id, req.body);
+        const user = await UserService.updateOne(req.params.email, req.body);
 
         res.status(user.success ? 201 : 400).send(user);
     }

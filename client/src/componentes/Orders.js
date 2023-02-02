@@ -107,7 +107,7 @@ export default function Orders({ showModal, onClose }) {
                                                                             -
                                                                         </Button>
                                                                         <span className='text-center flex items-center text-lg'>{product.quantity}</span>
-                                                                        <Button onButtonClick={() => dispatch({ type: "add", value: product })} pad="px-8" wit="w-2">
+                                                                       <Button disabled={product.quantity===product.stock} onButtonClick={() => dispatch({ type: "add", value: product })} pad="px-8" wit="w-2">
                                                                             +
                                                                         </Button>
                                                                     </div>

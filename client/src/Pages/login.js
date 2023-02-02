@@ -40,9 +40,9 @@ export default function Login() {
     const onGoogleSignHandler = async () => {
         const user = await signInGoogle();
 
-        const { displayName, email, photoURL } = user
-        dispatch({ type: "login", value: { name: displayName.split(" ")[0], email, photoURL } })
-        return navigate('/');
+        // const { displayName, email, photoURL } = user
+        // dispatch({ type: "login", value: { name: displayName.split(" ")[0], email, photoURL } })
+        return navigate('/login');
     }
 
     useEffect(() => {
@@ -86,7 +86,6 @@ export default function Login() {
                                 // si response.succes = false entonces muestro el error
                                 // si es true devuelvo el user
                                 response = await loginLocal(email, password)
-                                console.log("response",response.data.user)
                                 const user = response.success && response.data.user
                                 const { firstname, email: _email, id } = user
 

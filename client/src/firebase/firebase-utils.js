@@ -1,7 +1,9 @@
 import { useSelector } from "react-redux"
+import { useNavigate } from "react-router-dom"
+import swal from "sweetalert"
 
 
-const urlRailway="https://react-nucba-production.up.railway.app"
+const urlRailway = "http://localhost:5001"
 
 const mapUserFromFirebaseAuth = user => {
   console.log("Fc:mapUserFromFirebaseAuth (User) ")
@@ -37,8 +39,6 @@ export const userRegistration = async (email, password, name) => {
   });
 
   const response = await data.json()
-  console.log("respuesta del servidor", response)
-
 
   return response;
 
@@ -62,7 +62,6 @@ export const dataOrders = async (id) => {
   const url = `${urlRailway}/user/order/${id}`
   const data = await fetch(url);
   const response = await data.json()
-  console.log("Ordenes:", response)
   return response.orders
 }
 
@@ -71,9 +70,9 @@ export const dataOrders = async (id) => {
 export const buy = async (paquete, user) => {
 
   const url = `${urlRailway}/order`
+  console.log(paquete)
   const { buys } = paquete
-  const finalBuys = buys.map(({id, ...buy}) => buy)
-  console.log("fianlBuys",finalBuys)
+  const finalBuys = buys.map(({ id, ...buy }) => buy)
   const { id } = user
   const data = await fetch(url, {
     method: "POST",
@@ -84,8 +83,6 @@ export const buy = async (paquete, user) => {
   });
   const response = await data.json()
 
-  console.log("Respuesta del servidor:", response)
-  console.log(paquete)
 
   return response
 }
@@ -122,13 +119,52 @@ export const signOutUser = () => {
 
 
 
-export const resetPassword = () => {
-  console.log("Fc: resetPassword")
-  return null
+export const resetPassword = async (email, password) => {
+
+  const url = `${urlRailway}/user/${email}`
+
+  const data = await fetch(url, {
+    method: "PATCH",
+    body: JSON.stringify({ email, password }),
+    headers: {
+      'Content-Type': 'application/json'
+    },
+  });
+  const response = await data.json()
+
+  return response;
 }
 
 export const signInGoogle = () => {
-  console.log("Fc: signInGoogle")
+  
+
+  swal({
+    position: 'top-end',
+    icon: 'success',
+    title: 'Proximamente en uso!',
+    showConfirmButton: false,
+    timer: 1500
+  })
+ 
+
   return null
 }
+
+export const categoryArray = async () => {
+  const url = `${urlRailway}/category`
+  const data = await fetch(url)
+  const {categorys} = await data.json()
+
+  return categorys;
+}
+
+export const categoryById = async (id) => {
+  const url = `${urlRailway}/category/${id}`
+  const data = await fetch(url)
+  const category = await data.json()
+
+  return category;
+}
+
+
 

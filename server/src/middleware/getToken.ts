@@ -12,17 +12,13 @@ export const getTokenFromRequest = (req: CoreRequest, res: Response, next:
         const isBearer = checkBearerToken(authorization)
 
         if (!isBearer || !authorization) {
-            console.log('El token es invalido')
           return  res.status(403).send({error:'No existe token en el Bearer'});        }
 
         // Bearer 
         const { 1: token } = authorization.split(' ')
 
         if (!token) {
-            console.log('No existe token en el Bearer')
-            // return { sucess: false, error: 'No existe token en el Bearer' };
             return res.status(403).send({error:'No existe token en el Bearer'});
-
         }
 
         
@@ -30,7 +26,6 @@ export const getTokenFromRequest = (req: CoreRequest, res: Response, next:
 
         const payload = JWTservice.verify(token)
         const {id} = payload
-        console.log({ payload })
 
         req.user = id
 
