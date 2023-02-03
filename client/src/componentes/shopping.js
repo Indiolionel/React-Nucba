@@ -6,6 +6,7 @@ import Button from './button'
 export default function Shopping() {
     const products = useSelector(state => state.compra)
     const subTotal = products.reduce((acc, value) => acc + parseInt(value.price) * value.quantity, 0)
+    console.log("products", products)
     const dispatch = useDispatch()
     return (
         <div className="flow-root">
@@ -33,7 +34,7 @@ export default function Shopping() {
                                             -
                                         </Button>
                                         <span className='text-center flex items-center text-lg'>{product.quantity}</span>
-                                        <Button onButtonClick={() => dispatch({ type: "add", value: product })} pad="px-4" wit="w-2" >
+                                        <Button disabled={product.quantity===product.stock}  onButtonClick={() => dispatch({ type: "add", value: product })} pad="px-4" wit="w-2" >
                                             +
                                         </Button>
                                     </div>

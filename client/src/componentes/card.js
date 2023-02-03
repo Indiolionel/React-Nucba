@@ -6,7 +6,6 @@ import Notificacion from './notificacion'
 
 export default function Card({ data, onClick, type, onButtonClick }) {
 
-
   return (
     <div key={data.id} className="group flex flex-col relative p-5 border-solid rounded-lg
      bg-gray-200 hover:bg-gray-300 border-2  border-gray-400 hover:border-gray-600 "
@@ -51,7 +50,7 @@ export default function Card({ data, onClick, type, onButtonClick }) {
             </h3>
           </div>
           <div className='flex flex-col items-center mt-4'>
-            <Button onButtonClick={onButtonClick} pad="px-20">
+            <Button disabled={data.quantity===data.stock}  onButtonClick={onButtonClick} pad="px-20">
               Agregar
             </Button>
           </div>

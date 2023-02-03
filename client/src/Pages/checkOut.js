@@ -38,6 +38,7 @@ export default function CheckOut() {
       })
 
       const onSubmitHandler = (e) => {
+        console.log("paquete",paquete)
         paquete.buys= products;
         swal({
             position: 'top-end',
@@ -46,6 +47,8 @@ export default function CheckOut() {
             showConfirmButton: false,
             timer: 2500
         })
+        //vaciar carrito
+        dispatch({ type: 'delete' })
         navigate('/');
         e.preventDefault()
         return  buy(paquete,user)

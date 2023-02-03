@@ -2,8 +2,7 @@ import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import swal from "sweetalert"
 
-
-const urlRailway = "http://localhost:5001"
+const urlRailway = "https://react-nucba-production.up.railway.app"
 
 const mapUserFromFirebaseAuth = user => {
   console.log("Fc:mapUserFromFirebaseAuth (User) ")
@@ -65,14 +64,42 @@ export const dataOrders = async (id) => {
   return response.orders
 }
 
+export const updateStock = async (id,stockNew) => {
+  const url = `${urlRailway}/product/${id}`
+
+  const data = await fetch(url, {
+    method: "PATCH",
+    body: JSON.stringify({ id, stock: stockNew }),
+    headers: {
+      'Content-Type': 'application/json'
+    },
+  });
+  const response = await data.json()
+
+  return response;
+  
+
+}
+
 // mandar compra a firebase
 
 export const buy = async (paquete, user) => {
 
   const url = `${urlRailway}/order`
+
   console.log(paquete)
+
   const { buys } = paquete
-  const finalBuys = buys.map(({ id, ...buy }) => buy)
+
+  buys.map(({ id,stock,quantity}) => {
+    const newStock = stock-quantity
+    updateStock(id,newStock)
+
+  })
+  
+    
+  const finalBuys = buys.map(({ id,stock, ...buy }) => buy)
+  console.log("buy",finalBuys)
   const { id } = user
   const data = await fetch(url, {
     method: "POST",
@@ -87,7 +114,7 @@ export const buy = async (paquete, user) => {
   return response
 }
 
-
+//idCategory, stock
 
 // Sign-in with Email/Password
 export const loginLocal = async (email, password) => {
@@ -100,7 +127,6 @@ export const loginLocal = async (email, password) => {
     },
   });
   const response = await data.json()
-
 
 
   return response;

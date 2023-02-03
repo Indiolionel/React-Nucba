@@ -14,5 +14,12 @@ export class ProductControllers {
 		res.status(created.success ? 201 : 400).send(created);
     }
 
+    public static async updateById (req: Request, res: Response) {
+
+        
+        const created = await ProductService.updateById(+req.params.id,req.body);
+
+		res.status(created.success ? 201 : 400).send(created);
+    }
 
 }

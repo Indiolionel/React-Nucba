@@ -1,17 +1,19 @@
 import { Field, Form, Formik } from 'formik'
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Button from '../componentes/button'
 import Orders from '../componentes/Orders'
 import *  as  Yup from 'yup';
 import Input from '../componentes/input'
 import Textarea from '../componentes/textarea'
 import Loader from '../componentes/loader'
+import swal from 'sweetalert'
 
 export default function Contact() {
     const dispatch = useDispatch()
     const showModal = useSelector(state => state.modal)
+    const navigate = useNavigate();
 
     // const [borderColor, setBorderColor] =useState("")
 
@@ -74,6 +76,13 @@ export default function Contact() {
                     validationSchema={SignupSchema}
                     onSubmit={values => {
                         setCargando(false)
+                        swal({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Mensaje enviado!',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
                     }}
                 >
                     {({ errors, touched }) => (

@@ -4,7 +4,6 @@ export class CategoryService {
     constructor() { }
 
     public static async create(data: any) {
-
         try {
             const category = await prisma.category.create(
                 {
@@ -40,6 +39,7 @@ export class CategoryService {
             const category = await prisma.category.findUnique(
                 { where: { id }, include: { products: true } },
             );
+            console.log(category)
 
             if (!category) return { success: false, error: "No existe el id de categoria" };
 
