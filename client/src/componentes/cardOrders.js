@@ -13,7 +13,6 @@ export default function CardOrders({ order, oddEven }) {
     const parImpar =(oddEven%2 == 0) ? 'bg-gray-100' : 'bg-gray-0'
 
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    // const fechaFirebase = new Date(order?.createAt.seconds * 1000);
     const check = <svg className="h-8 w-8 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
     const pendding = <svg className="h-8 w-8 text-red-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">  <circle cx="12" cy="12" r="10" />  <polyline points="12 6 12 12 16 14" /></svg>
     return (
@@ -25,13 +24,11 @@ export default function CardOrders({ order, oddEven }) {
                         <h1 className="text-3xl dark:text-white lg:text-4xl font-semibold leading-7 lg:leading-9 text-gray-800">{`Order: #${order.id}`}</h1>
                         <p className='ml-4'>{order.shipping ? check : pendding}</p>
                     </div>
-                    {/* <p className="text-base dark:text-gray-300 font-medium leading-6 text-gray-600">{fechaFirebase.toLocaleTimeString("es-AR", options)}</p> */}
                 </div>
                 <div className="mt-10 flex flex-col xl:flex-row jusitfy-center items-stretch w-full xl:space-x-8 space-y-4 md:space-y-6 xl:space-y-0">
                     <div className="flex flex-col justify-start items-start w-full space-y-4 md:space-y-6 xl:space-y-8">
                         <div className="flex flex-col justify-start items-start dark:bg-gray-800 bg-gray-50 px-4 py-4 md:py-6 md:p-6 xl:p-8 w-full">
                             <p className="text-lg md:text-xl dark:text-white font-semibold leading-6 xl:leading-5 text-gray-800">Customer’s Cart</p>
-                            {/* cart */}
                             {order.buys?.map((product) => {
                                 const id = uuidv4()
                                 return <ProductCard key={id} product={product} />

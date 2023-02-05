@@ -4,23 +4,12 @@ import swal from "sweetalert"
 
 const urlRailway = "https://react-nucba-production.up.railway.app"
 
-const mapUserFromFirebaseAuth = user => {
-  console.log("Fc:mapUserFromFirebaseAuth (User) ")
-  return null
-}
-
-export const onAuthStateChange = (onChange) => {
-  console.log("Fc:onAuthStateChange (onChange) ")
-
-  return null
-}
 
 
 
-export const createUserProfile = async (userAuthenticated, name) => {
-  console.log("createUserProfile(userAuthenticated, name)")
-  return null;
-};
+
+
+
 
 
 // User Registration
@@ -81,13 +70,10 @@ export const updateStock = async (id,stockNew) => {
 
 }
 
-// mandar compra a firebase
 
 export const buy = async (paquete, user) => {
 
   const url = `${urlRailway}/order`
-
-  console.log(paquete)
 
   const { buys } = paquete
 
@@ -99,7 +85,6 @@ export const buy = async (paquete, user) => {
   
     
   const finalBuys = buys.map(({ id,stock, ...buy }) => buy)
-  console.log("buy",finalBuys)
   const { id } = user
   const data = await fetch(url, {
     method: "POST",

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import CardOrders from '../componentes/cardOrders'
 import Loader from '../componentes/loader'
 import Orders from '../componentes/Orders'
-import { dataOrders } from '../firebase/firebase-utils'
+import { dataOrders } from '../raywail/base-date-utils'
 
 export default function Ordenes() {
 
@@ -32,7 +32,7 @@ export default function Ordenes() {
     return <Loader />
   }
   if (ordenes.length===0) {
-    return <div className='text-center mt-12'>No hay ninguna compra aun</div>
+    return <div className='text-center mt-12'>No hay ninguna compra aún</div>
   }
 
   return (

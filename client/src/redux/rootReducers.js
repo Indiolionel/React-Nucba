@@ -1,4 +1,3 @@
-import { updatePassword } from "firebase/auth";
 import { combineReducers } from "redux";
 import { listaCompra } from "../reducers/listaCompra";
 import { modal } from "../reducers/modal";

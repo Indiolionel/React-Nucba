@@ -5,7 +5,7 @@ import Button from '../componentes/button'
 import Orders from '../componentes/Orders'
 import Shopping from '../componentes/shopping'
 import { v4 as uuidv4 } from 'uuid';
-import { buy } from '../firebase/firebase-utils'
+import { buy } from '../raywail/base-date-utils'
 import swal from 'sweetalert'
 
 export default function CheckOut() {
@@ -38,7 +38,6 @@ export default function CheckOut() {
       })
 
       const onSubmitHandler = (e) => {
-        console.log("paquete",paquete)
         paquete.buys= products;
         swal({
             position: 'top-end',

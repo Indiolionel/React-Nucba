@@ -6,7 +6,7 @@ export default function skeleton({ expand }) {
     
 
     return (
-        <div className="group flex flex-col relative p-5 border-solid rounded-lg
+        <div className="animate-pulse  group flex flex-col relative p-5 border-solid rounded-lg
         bg-gradient-to-r from-gray-400 via-gray-200 to-gray-100 hover:bg-gray-300 border-2  border-gray-400 hover:border-gray-600 "
         >
 

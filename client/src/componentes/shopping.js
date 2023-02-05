@@ -6,7 +6,6 @@ import Button from './button'
 export default function Shopping() {
     const products = useSelector(state => state.compra)
     const subTotal = products.reduce((acc, value) => acc + parseInt(value.price) * value.quantity, 0)
-    console.log("products", products)
     const dispatch = useDispatch()
     return (
         <div className="flow-root">

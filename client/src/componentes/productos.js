@@ -3,7 +3,7 @@ import { PRODUCT } from '../constants/utils'
 import Card from './card'
 import { useDispatch, useSelector } from "react-redux"
 import Button from './button'
-import { categoryById } from '../firebase/firebase-utils'
+import { categoryById } from '../raywail/base-date-utils'
 import Skeleton from './skeleton';
 
 export default function Productos({ categorySelected, setCategorySelected }) {
