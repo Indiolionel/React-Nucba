@@ -32,7 +32,7 @@ export default function Ordenes() {
     return <Loader />
   }
   if (ordenes.length===0) {
-    return <div className='text-center mt-12'>PRIMERO COMPRA ALGO, RATATUIL!!</div>
+    return <div className='text-center mt-12'>No hay ninguna compra aun</div>
   }
 
   return (
