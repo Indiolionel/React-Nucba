@@ -1,8 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux';
-import { v4 } from 'uuid';
 import ProductCard from './productCard'
-import Productos from './productos';
 import { v4 as uuidv4 } from 'uuid';
 
 export default function CardOrders({ order, oddEven }) {
@@ -18,7 +14,7 @@ export default function CardOrders({ order, oddEven }) {
     return (
 
         <>
-            <div className={`py-14 px-4 md:px-6 2xl:px-20 ${parImpar} 2xl:container 2xl:mx-auto`}>
+            <div className={`py-14 px-4 mt-12 md:px-6 2xl:px-20 ${parImpar} 2xl:container 2xl:mx-auto`}>
                 <div className="flex justify-start item-start space-y-2 flex-col">
                     <div className='flex'>
                         <h1 className="text-3xl dark:text-white lg:text-4xl font-semibold leading-7 lg:leading-9 text-gray-800">{`Order: #${order.id}`}</h1>

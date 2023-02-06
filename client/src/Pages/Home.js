@@ -8,7 +8,6 @@ import Orders from '../componentes/Orders'
 export default function Home() {
   const dispatch = useDispatch()
   const showModal = useSelector(state => state.modal)
-  const { state } = useLocation()
   const navigate = useNavigate()
   useEffect(() => {
   

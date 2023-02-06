@@ -34,7 +34,9 @@ function App() {
 
   return (
     <>
-      <NavBar />
+      <div className=''>     
+       <NavBar />
+      </div>
       <Routes>
         <Route path="/*" element={<Home />} />
         <Route path="checkout" element={<ProtectedRoute user={user.name}>

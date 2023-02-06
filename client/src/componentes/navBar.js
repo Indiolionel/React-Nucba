@@ -26,11 +26,14 @@ export default function NavBar() {
   const dispatch = useDispatch()
 
   const total = state.reduce((acc, item) => (acc += item.quantity), 0);
-
+  const showModal = useSelector(state => state.modal)
   const { name, photoURL } = useSelector(state => state.user)
+
+  const onClose = () => {
+    dispatch({ type: "change", value: false })
+  }
   const loginoutHandler = () => {
-    // const aceptar = window.confirm("Estas seguro que quieres salir??")
-    // aceptar && dispatch({ type: "logout" })
+   
     swal({
       title: "Estas seguro que deseas cerrar sesion?",
       text: "Se cerrara la sesion",
@@ -46,12 +49,14 @@ export default function NavBar() {
     return navigate("/")
   }
 
+ 
+
   const [hidden, setHidden] = useState(false)
   const navigate = useNavigate()
   const linkNav = useLocation();
   return (
     
-    <Disclosure as="nav" className="bg-gray-800">
+    <Disclosure as="nav"  className="bg-gray-800 fixed top-0 left-0 right-0 z-10">
       {({ open }) => (
         <>
         {linkNav.pathname==="/" ? setStateCurrentHome(true) : setStateCurrentHome(false)}
@@ -131,7 +136,7 @@ export default function NavBar() {
                     </svg>}
                   </button>
                   {hidden !== false ?
-                    <div className='absolute mt-32 py-2 px-2 z-10 bg-slate-600 flex flex-col justify-center items-start w-36' onBlur={() => setHidden(false)}
+                    <div className='absolute mt-32 py-2 px-2 mr-8 z-10 bg-slate-600 flex flex-col justify-center items-start w-36' onBlur={() => setHidden(false)}
                     >
                       <Link className='text-slate-200 text-lg hover:text-slate-400' to="/ordenes">Mis ordenes</Link>
                       <button onClick={loginoutHandler} type="button" className=''>
