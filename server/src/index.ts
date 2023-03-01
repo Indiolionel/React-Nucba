@@ -22,12 +22,8 @@ server.use(express.static(publicPath));
 server.use(express.static("*/"));
 
 
-
-
 server.use(express.json());
 server.use(cors());
-
-
 
 server.use('/user', usersRouter);
 server.use('/category', categoryRouter);
