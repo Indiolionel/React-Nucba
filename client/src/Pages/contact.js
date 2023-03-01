@@ -95,7 +95,7 @@ export default function Contact() {
                             <Form className='flex flex-col mt-8 space-y-6'>
 
 
-                                <Field style={errors.firstName && { border: "solid 1px rgb(214,47,39)" }} name="firstName" type="text" placeholder="First Name" as={Input} />
+                                <Field style={errors.firstName && { border: "solid 1px rgb(214,47,39)" }} name="firstName" type="text" placeholder="First Name" />
                                 {errors.firstName && touched.firstName ? (
 
                                     <div className='text-red-600'>{errors.firstName}</div>
@@ -108,7 +108,7 @@ export default function Contact() {
 
                                 <Field style={errors.email && { border: "solid 1px rgb(214,47,39)" }} name="email" type="email" placeholder="Email" as={Input} />
                                 {errors.email && touched.email ? (
-                                    <div className='text-red-600'>{errors.email}</div>
+                                    <div className='text-red-600 mt-0'>{errors.email}</div>
                                 ) : null}
 
                                 <Field
