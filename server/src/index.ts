@@ -23,6 +23,7 @@ server.use(express.static("*/"));
 
 
 
+
 server.use(express.json());
 server.use(cors());
 
