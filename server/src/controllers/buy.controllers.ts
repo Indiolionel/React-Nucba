@@ -4,6 +4,7 @@ import { Request, Response } from 'express';
 
 export class BuyControllers {
 
+    
     constructor () {}
 
     public static async create (req: Request, res: Response) {
