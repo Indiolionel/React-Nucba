@@ -74,8 +74,9 @@ export default function Contact() {
                         message: ''
                     }}
                     validationSchema={SignupSchema}
-                    onSubmit={values => {
+                    onSubmit={(values, {resetForm} )=> {
                         setCargando(false)
+                        resetForm({values:''})
                         swal({
                             position: 'top-end',
                             icon: 'success',
@@ -95,7 +96,7 @@ export default function Contact() {
                             <Form className='flex flex-col mt-8 space-y-6'>
 
 
-                                <Field style={errors.firstName && { border: "solid 1px rgb(214,47,39)" }} name="firstName" type="text" placeholder="First Name" />
+                                <Field style={errors.firstName && { border: "solid 1px rgb(214,47,39)" }} name="firstName" type="text" placeholder="First Name" as={Input} />
                                 {errors.firstName && touched.firstName ? (
 
                                     <div className='text-red-600'>{errors.firstName}</div>
