@@ -16,7 +16,7 @@ export const prisma = new PrismaClient();
 
 const server = express();
 const port = process.env.PORT;
-const publicPath = path.join(__dirname, '..', './react');
+const publicPath = path.join(__dirname, '..','./react');
 
 server.use(express.static(publicPath));
 server.use(express.static("*/"));
