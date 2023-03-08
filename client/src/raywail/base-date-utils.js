@@ -2,7 +2,7 @@ import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import swal from "sweetalert"
 
-const urlRailway = "https://react-nucba-production.up.railway.app"
+const urlRailway = "https://plantasventas.up.railway.app/"
 
 
 
