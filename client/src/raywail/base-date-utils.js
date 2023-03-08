@@ -5,13 +5,6 @@ import swal from "sweetalert"
 const urlRailway = "https://plantasventas.up.railway.app/"
 
 
-
-
-
-
-
-
-
 // User Registration
 
 export const userRegistration = async (email, password, name) => {
