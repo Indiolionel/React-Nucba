@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-Production: https://react-nucba-production.up.railway.app/
+Production: https://plantasventas.up.railway.app/
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
