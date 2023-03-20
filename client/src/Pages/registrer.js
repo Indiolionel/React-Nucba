@@ -25,7 +25,7 @@ export default function Registrer() {
 
   const SignupSchema = Yup.object().shape({
     fullname: Yup.string()
-      .matches(/^[a-z/A-Z]+$/, 'Solo letras')
+      .matches(/^[a-z/ /A-Z]+$/, 'Solo letras')
       .min(4, 'Minimo 4 caracteres')
       .max(20, 'Maximo 20 caracteres')
       .required('Required'),

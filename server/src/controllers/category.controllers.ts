@@ -19,12 +19,12 @@ export class CategoryControllers {
 
         const category = await CategoryService.getAll();
 
-		res.status(category.success ? 201 : 400).send(category);
+		res.status(category.success ? 200 : 400).send(category);
     }
 
     public static async getById(req: Request, res: Response) {
         const category = await CategoryService.getById(+req.params.id);
 
-        res.status(category.success ? 201 : 400).send(category);
+        res.status(category.success ? 200 : 400).send(category);
     }
 }
